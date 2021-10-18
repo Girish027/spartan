@@ -1,0 +1,75 @@
+{
+  "viewInformation": {
+    "viewName": "View_InteractiveChatCount_311",
+    "viewDescription": "View_InteractiveChatCount_311",
+    "layerName": "Layer 2",
+    "path": "/Reports/prod/",
+    "viewType": "fact",
+    "owner": "Insights",
+    "ttlDays": "90",
+    "esIndexEnabled": "0",
+    "druidIndexEnabled": "0",
+    "scheduleStartTime": "1540684800000",
+    "scheduleEndTime": "1919376000000",
+    "complexity": "2",
+    "viewOutputPath": "/Reports/prod/",
+    "format": "json",
+    "dqEnabled": "0",
+    "materializationEnabled": true,
+    "timeDimensionColumnName": "TimeField",
+    "preferReadMaterializedData":true,
+    "isDQ": "0",
+    "viewGroup":"test"
+  },
+  "viewSQLDefinition": {
+    "definitionName": "View_InteractiveChatCount_311",
+    "sqlDefinition": "select COUNT(DISTINCT interactionid) AS interactivechats, reportday FROM (SELECT interactionid ,from_unixtime(eventraisedtimemillis div 1000, 'yyyy-MM-dd HH:mm:ss') AS reportday FROM Assistinteractions WHERE eventType='interaction/status/interactive' ) T GROUP BY reportday"
+  },
+  "sqls": [
+  {
+    "View_InteractiveChatCount_311": "Select  unix_timestamp()*1000 as TimeField,CheckDay,PastData, aInteractiveChats ,bInteractiveChats from  AssistInteractions"
+  }
+],
+  "importsList": [
+    {
+      "viewName": "AssistInteractions",
+      "startTime": "1543836600000",
+      "endTime": "1543840200000"
+    }
+  ],
+  "hdfsSourceList": [
+    {
+      "hdfsSourceName": "AssistInteractions",
+      "hdfsPath": "/raw/prod/<client>/pxassist/interactions"
+    }
+  ],
+  "columnList": [
+    {
+      "columnName": "reportday",
+      "columnDisplayName": "reportday",
+      "columnDescription": "reportday",
+      "columnPath": "reportday",
+      "dataType": "String",
+      "isDimension": "0",
+      "uniqueKeyFlag": "0"
+    },
+    {
+      "columnName": "InteractiveChats",
+      "columnDisplayName": "InteractiveChats",
+      "columnDescription": "InteractiveChats",
+      "columnPath": "InteractiveChats",
+      "dataType": "String",
+      "isDimension": "0",
+      "uniqueKeyFlag": "0"
+    },
+    {
+      "columnName": "TimeField",
+      "columnDisplayName": "TimeField",
+      "columnDescription": "TimeField",
+      "columnPath": "TimeField",
+      "dataType": "date",
+      "isDimension": "0",
+      "uniqueKeyFlag": "1"
+    }
+  ]
+}

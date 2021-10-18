@@ -1,0 +1,20 @@
+{
+  "viewName": "AssistInteractions",
+  "path": "/Reports/prod/",
+  "format": "json",
+  "referenceTime": "-60",
+  "timeDimensionColumn": "TimeField",
+  "dqEnabled": false,
+  "materializationEnabled": false,
+  "processingPlugInType": "SQL",
+  "processorPlugInMainClass": null,
+  "preferMaterializedData":true,
+  "uniqueFields": [
+    "CheckDay"
+  ],
+  "sqls": [
+    {
+      "AssistInteractions": "Select  * from  AssistInteractions"
+    }
+  ]
+}

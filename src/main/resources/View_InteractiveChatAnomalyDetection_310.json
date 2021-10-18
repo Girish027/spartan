@@ -1,0 +1,32 @@
+{
+  "viewName": "View_InteractiveChatAnomalyDetection_310",
+  "path": "/Reports/prod/",
+  "format": "json",
+  "referenceTime": "-60",
+  "timeDimensionColumn": "TimeField",
+  "dqEnabled": false,
+  "materializationEnabled": true,
+  "processingPlugInType": "SQL",
+  "processorPlugInMainClass": null,
+  "preferReadMaterializedData":true,
+  "uniqueFields": [
+    "CheckDay"
+  ],
+  "importsList": [
+    {
+      "viewName": "View_InteractiveChatCount_310",
+      "startTime": "1543836600000",
+      "endTime": "1543840200000"
+    },
+    {
+      "viewName": "View_InteractiveChatCount_311",
+      "startTime": "1543836600000",
+      "endTime": "1543840200000"
+    }
+  ],
+  "sqls": [
+    {
+      "View_InteractiveChatAnomalyDetection_310": "Select  unix_timestamp()*1000 as TimeField,CheckDay,PastData, aInteractiveChats ,bInteractiveChats from  View_InteractiveChatCount_310 union Select  unix_timestamp()*1000 as TimeField,CheckDay,PastData, aInteractiveChats ,bInteractiveChats from  View_InteractiveChatCount_311"
+    }
+  ]
+}

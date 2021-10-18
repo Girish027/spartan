@@ -1,1 +1,2 @@
 # spartan
+generic spark app
